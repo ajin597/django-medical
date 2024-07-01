@@ -1,0 +1,96 @@
+{% extends 'layout/lay.html' %}
+{% block 'content' %}
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    function reg(){
+        Swal.fire({
+  title: "Good job!",
+  text: "You clicked the button!",
+  icon: "success"
+});
+    }
+</script>
+<style>
+    /* Container styles */
+    .container {
+        width: 400px;
+        margin: 50px auto;
+        background-color: #f9f9f9;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+    body {
+  font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial, sans-serif; 
+}
+
+    /* Form group styles */
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    /* Form label styles */
+    .form-label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+        color: #333;
+    }
+
+   
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+        width: calc(100% - 12px);
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+
+    #signup-btn {
+        width: 100%;
+        padding: 12px;
+        background-color: #4caf50;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s;
+    }
+
+    #signup-btn:hover {
+        background-color: #45a049;
+    }
+
+
+</style>
+
+
+    <div class="container">
+        <h1>SignUp</h1>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="id_username" class="form-label">Username:</label>
+                {{ form.username }}
+                {{ form.username.errors }}
+            </div>
+            <div class="form-group">
+                <label for="id_password1" class="form-label">Password:</label>
+                {{ form.password1 }}
+                {{ form.password1.errors }}
+            </div>
+            <div class="form-group">
+                <label for="id_password2" class="form-label">Confirm Password:</label>
+                {{ form.password2 }}
+                {{ form.password2.errors }}
+
+            </div>
+            <button onclick="reg()" id="signup-btn">SignUp</button>
+
+        </form>
+    </div>
+{% endblock %}

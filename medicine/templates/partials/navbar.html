@@ -1,0 +1,44 @@
+<style>
+    nav {
+        background-color: #333; /* Background color of the navbar */
+        overflow: hidden;
+    }
+
+    nav a {
+        float: left;
+        display: block;
+        color: white; /* Text color of navbar links */
+        text-align: center;
+        padding: 14px 16px; /* Padding around the links */
+        text-decoration: none;
+    }
+
+    nav a:hover {
+        background-color: #ddd; /* Background color of navbar links on hover */
+        color: black; /* Text color of navbar links on hover */
+    }
+
+    nav form {
+        float: left; /* Align form to the left */
+        margin-top: 10px; /* Adjust top margin to align with links */
+        margin-left: 10px; /* Add some space between the form and links */
+    }
+
+    nav input[type="text"],
+    nav button[type="submit"] {
+        height: 34px; /* Adjust input and button height for consistency */
+        vertical-align: middle; /* Align input and button vertically */
+    }
+</style>
+
+
+<nav>
+    <a href="{% url 'home1' %}">Home</a>
+    <a href="{% url 'create' %}">add Medicines</a>
+    <a href="{% url 'read' %}">read</a>
+    <form method="GET" action="{% url 'search_medicine' %}">
+        <input type="text" name="query" placeholder="Search">
+        <button type="submit">Search</button>
+    </form>
+    <a href="{% url 'logout' %}" >LogOut</a>
+</nav>

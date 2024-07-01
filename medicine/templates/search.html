@@ -1,0 +1,66 @@
+{% extends 'layout/app-layout.html' %}
+
+{% block 'content' %}
+<style>
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333; 
+    }
+
+    table {
+        width: 50%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        margin-left: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    th, td {
+        padding: 12px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #f2f2f2; 
+    }
+
+    tr:nth-child(even) {
+        background-color: #f9f9f9; 
+    }
+
+    tr:hover {
+        background-color: #cfd7cf; 
+    }
+
+    p {
+        text-align: center;
+        color: #555; 
+        font-style: italic;
+    }
+</style>
+
+<h2>Search Results</h2>
+{% if medicines %}
+    <table border="1">
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Expiry Date</th>
+            <th>Price</th>
+        </tr>
+        {% for medicine in medicines %}
+            <tr>
+                <td>{{ medicine.MedicineName }}</td>
+                <td>{{ medicine.Description }}</td>
+                <td>{{ medicine.ExpiryDate }}</td>
+                <td>{{ medicine.Price }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% else %}
+    <p>No results found.</p>
+{% endif %}
+{% endblock %}

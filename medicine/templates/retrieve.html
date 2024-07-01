@@ -1,0 +1,87 @@
+{% extends 'layout/app-layout.html' %}
+{% block 'content' %}
+<style>
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    table {
+        width: 50%;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        padding: 12px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    .action-buttons a {
+        display: inline-block;
+        padding: 8px 12px;
+        text-decoration: none;
+        border-radius: 5px;
+        font-size: 16px;
+        color: #fff;
+        margin-right: 5px;
+        transition: background-color 0.3s;
+    }
+
+    .btn-edit {
+        background-color: #007bff; /* Blue */
+    }
+
+    .btn-delete {
+        background-color: #dc3545; /* Red */
+    }
+
+    .action-buttons a:hover {
+        background-color: #555; /* Darker color on hover */
+    }
+
+    .action-buttons a i {
+        margin-right: 5px;
+    }
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-ZwEjgkoxkOs1wjRU2/lvsEz9Y/4d9v/vJ8UumNT2RJmLk8ipzn7LkznryzLxwzgJfI+MxNp/GkMZXEpSyw5bCA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<h1>Retrieve Products</h1>
+<table border="1">
+    <tr>
+        <th>medicine_id</th>
+        <th>medicine_name</th>
+        <th>medicine_description</th>
+        <th>medicine_expirydate</th>
+        <th>medicine_price</th>
+        <th colspan="2" style="text-align: center;">actions</th>
+    </tr>
+    {% for x in list %}
+    <tr>
+        <td>{{ x.id }}</td>
+        <td>{{ x.MedicineName }}</td> 
+        <td>{{ x.Description }}</td>
+        <td>{{ x.ExpiryDate }}</td>
+        <td>{{ x.Price }}</td>
+        <td class="action-buttons">
+            <a href="{% url 'update1' x.id %}" class="btn btn-edit" >
+            Edit
+            </a>
+        </td>
+        <td class="action-buttons">
+            <a href="{% url 'delete1' x.id %}" class="btn btn-delete">delete
+            
+            </a>
+        </td>
+        
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
